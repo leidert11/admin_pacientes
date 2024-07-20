@@ -15,6 +15,14 @@
       mensaje: ""   
     })
 
+    defineEmits([
+      'update:nombre',
+      'update:propietario',
+      'update:email',
+      'update:alta',
+      'update:sintomas'
+    ])
+
     const state = reactive({
         nombre: "",
         propietario: "",
