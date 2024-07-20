@@ -13,6 +13,10 @@
         sintomas: "",
     });
 
+    const guardarPaciente = () => {
+      pacientes.value.push(state)
+    }
+
 </script>
 
 <template>
@@ -26,6 +30,7 @@
       v-model:email="state.email"
       v-model:alta="state.alta"
       v-model:sintomas="state.sintomas"
+      @guardar-paciente="guardarPaciente"
       
       />
       
