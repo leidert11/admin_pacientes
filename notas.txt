@@ -1,0 +1,32 @@
+para capturar los datos de un input hay multiples 
+
+1) en el script poner 
+
+    const leerNombre = e => {
+        nombre.value = e.target.value
+    }
+
+    en el template poner 
+
+    :value="leerNombre"
+    @input="(e) => nombre = e.target.value"
+
+
+2) en el sccript poner :
+
+    const nombre = ref('')
+
+    en el template :
+
+    :value="nombre"
+    @input="(e) => nombre = e.target.value"
+
+3) o la mas corta :
+
+scritp:
+
+    const nombre = ref('')
+
+template:
+
+    v-model="nombre"
