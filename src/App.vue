@@ -2,6 +2,7 @@
   import { ref,reactive } from 'vue'
   import Header from './components/Header.vue'
   import Formulario from './components/Formulario.vue'
+  import Paciente from './components/Paciente.vue';
 
   const pacientes = ref([])
 
@@ -13,8 +14,17 @@
         sintomas: "",
     });
 
+    const limpiarFormulario = () => {
+      state.nombre = ""
+      state.propietario = ""
+      state.email = ""
+      state.alta = ""
+      state.sintomas = ""
+    }
+
     const guardarPaciente = () => {
-      pacientes.value.push(state)
+      pacientes.value.push({...state})
+      limpiarFormulario()
     }
 
 </script>
@@ -37,15 +47,21 @@
       <div class="md:w-1/2 md:h-screen overflow-y-scroll ">
         <h3 class="font-black text-3xl text-center">Administra tus pacientes</h3>
 
-        <div
-        v-if="pacientes.length > 0"
-        >
+        <div v-if="pacientes.length > 0">
+
+        <p class="text-lg mt-5 text-center mb-10">
+          Informacion de pacientes
+          <span class="text-indigo-600 font-bold">Adminitralos</span>
+        </p>
+
+        <Paciente 
+        v-for="paciente in pacientes"
+        :paciente="paciente"
+        :key="paciente.id"
+        />
       </div>
-      <p v-else class="text-xl mt-5 text-center">No hay pacientes <span class="text-indigo-600 font-bold">registralos</span></p>
+      <p v-else class="text-xl mt-5 text-center">No hay pacientes <span class="text-indigo-600 font-bold">Adminitralos</span></p>
       </div>
     </div>
   </div>
 </template>
-
-<style scoped>
-</style>
