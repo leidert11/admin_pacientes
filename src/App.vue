@@ -77,9 +77,9 @@
 </script>
 
 <template>
-  <div class="container mx-auto mt-20">
+  <div class="container mx-auto px-4 mt-20">
     <Header />
-    <div class="mt-12 md:flex">
+    <div class="mt-12 flex flex-col md:flex-row">
       <Formulario 
         v-model:nombre="state.nombre"
         v-model:propietario="state.propietario"
@@ -89,8 +89,8 @@
         @guardar-paciente="guardarPaciente"
         :id="state.id"
       />
-      <div class="md:w-1/2 md:h-screen overflow-y-scroll">
-        <h3 class="font-black text-3xl text-center">Administra tus pacientes</h3>
+      <div class="md:w-1/2 md:h-screen overflow-y-auto mt-8 md:mt-0">
+        <h3 class="font-black text-2xl md:text-3xl text-center">Administra tus pacientes</h3>
         <div v-if="pacientes.length > 0">
           <p class="text-lg mt-5 text-center mb-10">
             Información de pacientes

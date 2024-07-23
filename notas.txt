@@ -35,3 +35,10 @@ template:
 siempre que vaya tener datos que vayan a cambiar lo mejor para hacer es con computed propertive 
 
 el wacth sirve para reescribir el localstorage cada vez que se hagan cambios 
+
+
+    Swal.fire({
+      icon: "success",
+      title: '<span class="font-bold text-green-600">Éxito</span>',
+      html: '<p class="font-bold text-green-600 text-2xl">Guardado exitosamente</p>'
+    });
