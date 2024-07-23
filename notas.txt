@@ -33,3 +33,5 @@ template:
 
 
 siempre que vaya tener datos que vayan a cambiar lo mejor para hacer es con computed propertive 
+
+el wacth sirve para reescribir el localstorage cada vez que se hagan cambios 
