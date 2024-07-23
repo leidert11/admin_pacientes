@@ -1,4 +1,5 @@
 <script setup>
+  import { computed } from 'vue';
   import Swal from 'sweetalert2';
   import 'sweetalert2/dist/sweetalert2.min.css';
 
@@ -12,6 +13,10 @@
   ]);
 
   const props = defineProps({
+    id: {
+      type : [ String ,null ],
+      required : true
+    },
     nombre: {
       type: String,
       required: true
@@ -39,18 +44,21 @@
     Swal.fire({
       icon: "error",
       title: '<span class="font-bold text-red-600">Error</span>',
-      html: '<p class="font-bold text-red-600">Todos los campos son obligatorios</p>'
+      html: '<p class="font-bold text-red-600 text-2xl">Todos los campos son obligatorios</p>'
     });
   } else {
     Swal.fire({
       icon: "success",
       title: '<span class="font-bold text-green-600">Éxito</span>',
-      html: '<p class="font-bold text-green-600">Guardado exitosamente</p>'
+      html: '<p class="font-bold text-green-600 text-2xl">Guardado exitosamente</p>'
     });
     emit("guardar-paciente");
   }
 };
 
+ const editarBoton = computed(() => {
+   return props.id 
+ })
 </script>
 
 
@@ -138,7 +146,7 @@
       <input
         type="submit"
         class="bg-indigo-600 w-full p-3 text-white uppercase font-bold rounded-md hover:bg-indigo-700 cursor-pointer transition-colors"
-        value="Registrar paciente"
+        :value="[editarBoton ? 'Guardar Cambios' : 'Registrar Paciente']"
       />
     </form>
   </div>

@@ -30,3 +30,6 @@ scritp:
 template:
 
     v-model="nombre"
+
+
+siempre que vaya tener datos que vayan a cambiar lo mejor para hacer es con computed propertive 

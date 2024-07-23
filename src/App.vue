@@ -1,5 +1,6 @@
 <script setup>
   import { ref,reactive } from 'vue'
+  import { uid } from 'uid';
   import Header from './components/Header.vue'
   import Formulario from './components/Formulario.vue'
   import Paciente from './components/Paciente.vue';
@@ -7,6 +8,7 @@
   const pacientes = ref([])
 
   const state = reactive({
+        id: null,
         nombre: "",
         propietario: "",
         email: "",
@@ -15,18 +17,31 @@
     });
 
     const limpiarFormulario = () => {
-      state.nombre = ""
-      state.propietario = ""
-      state.email = ""
-      state.alta = ""
-      state.sintomas = ""
+      Object.assign(state, {
+        nombre : "",
+        propietario : "",
+        email : "",
+        alta : "",
+        sintomas : "",
+        id:null
+      })
     }
 
     const guardarPaciente = () => {
-      pacientes.value.push({...state})
+      if (state.id) {
+        const i = pacientes.value.findIndex(pacienteState => pacienteState.id === state.id)
+        pacientes.value[i] = {...state}
+      } else {
+        pacientes.value.push({...state, id: uid()})
+      }
       limpiarFormulario()
     }
 
+    const actualizarPaciente = (id) => {
+      const paciente = pacientes.value.filter(paciente => paciente.id === id)[0]
+
+      Object.assign(state, paciente)
+    }
 </script>
 
 <template>
@@ -41,6 +56,7 @@
       v-model:alta="state.alta"
       v-model:sintomas="state.sintomas"
       @guardar-paciente="guardarPaciente"
+      :id="state.id"
       
       />
       
@@ -58,6 +74,7 @@
         v-for="paciente in pacientes"
         :paciente="paciente"
         :key="paciente.id"
+        @actualizar-paciente="actualizarPaciente"
         />
       </div>
       <p v-else class="text-xl mt-5 text-center">No hay pacientes <span class="text-indigo-600 font-bold">Adminitralos</span></p>
