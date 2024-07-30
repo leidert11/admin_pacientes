@@ -64,6 +64,9 @@ const validar = () => {
       emit('guardar-paciente')
     })
   }
+  setTimeout(() => {
+    errors.value = {}
+  }, 3000)
 }
 
 const editarBoton = computed(() => props.id)
