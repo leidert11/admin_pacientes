@@ -95,7 +95,11 @@ const editarBoton = computed(() => props.id)
           @input="$emit('update:nombre', $event.target.value)"
           :class="{'border-red-500': errors.nombre}"
         />
-        <ErrorMessage :message="errors.nombre" />
+        <div class="h-6">
+          <ErrorMessage v-if="errors.nombre">
+            <p class="text-red-600 text-sm">{{ errors.nombre }}</p>
+          </ErrorMessage>
+        </div>
       </div>
 
       <!-- Nombre del propietario -->
@@ -112,7 +116,11 @@ const editarBoton = computed(() => props.id)
           @input="$emit('update:propietario', $event.target.value)"
           :class="{'border-red-500': errors.propietario}"
         />
-        <ErrorMessage :message="errors.propietario" />
+        <div class="h-6">
+          <ErrorMessage v-if="errors.propietario">
+            <p class="text-red-600 text-sm">{{ errors.propietario }}</p>
+          </ErrorMessage>
+        </div>
       </div>
 
       <!-- Email del propietario -->
@@ -129,7 +137,11 @@ const editarBoton = computed(() => props.id)
           @input="$emit('update:email', $event.target.value)"
           :class="{'border-red-500': errors.email}"
         />
-        <ErrorMessage :message="errors.email" />
+        <div class="h-6">
+          <ErrorMessage v-if="errors.email">
+            <p class="text-red-600 text-sm">{{ errors.email }}</p>
+          </ErrorMessage>
+        </div>
       </div>
 
       <!-- Fecha de alta -->
@@ -146,7 +158,11 @@ const editarBoton = computed(() => props.id)
           @input="$emit('update:alta', $event.target.value)"
           :class="{'border-red-500': errors.alta}"
         />
-        <ErrorMessage :message="errors.alta" />
+        <div class="h-6">
+          <ErrorMessage v-if="errors.alta">
+            <p class="text-red-600 text-sm">{{ errors.alta }}</p>
+          </ErrorMessage>
+        </div>
       </div>
 
       <!-- Síntomas -->
@@ -162,7 +178,11 @@ const editarBoton = computed(() => props.id)
           @input="$emit('update:sintomas', $event.target.value)"
           :class="{'border-red-500': errors.sintomas}"
         ></textarea>
-        <ErrorMessage :message="errors.sintomas" />
+        <div class="h-6">
+          <ErrorMessage v-if="errors.sintomas">
+            <p class="text-red-600 text-sm">{{ errors.sintomas }}</p>
+          </ErrorMessage>
+        </div>
       </div>
 
       <input
